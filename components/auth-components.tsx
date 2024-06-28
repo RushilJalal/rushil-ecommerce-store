@@ -10,8 +10,6 @@ export function SignIn({
       action={async () => {
         "use server";
         await signIn(provider);
-        window.location.href =
-          "https://rushil-ecommerce-store.vercel.app/api/auth/signin?callbackUrl=https%3A%2F%2Frushil-ecommerce-store.vercel.app%2F";
       }}
     >
       <Button {...props}>Sign In</Button>
