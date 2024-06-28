@@ -1,0 +1,26 @@
+name: "✨ Feature Request"
+description: "Suggest an idea for this project "
+title: "[Feature]:"
+labels: [Feature, Needs Triage]
+body:
+  - type: textarea
+    attributes:
+      label: "Describe the feature"
+      description:
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: "Add ScreenShots"
+      description: "Add sufficient SS to explain your issue."
+    validations:
+      required: false
+  - type: checkboxes
+    attributes:
+      label: "Record"
+      options:
+        - label: "I agree to follow this project's Code of Conduct"
+        - label: "I'm a GSSOC'24 contributor"
+        - label: "I'm a VSOC'24(Vinayasa Summer of Code) contributor"
+          required: true
+        - label: "I want to work on this issue"

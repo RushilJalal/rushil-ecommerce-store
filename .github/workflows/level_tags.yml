@@ -1,0 +1,46 @@
+name: Assign Labels Based on Keywords
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  assign-labels:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+
+    steps:
+      - name: Assign Labels Based on Keywords
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const keywordsLabelsMap = {
+              "level1": ["bug", "error", "issue", "documentation", "docs"],
+              "level2": ["feature", "enhancement", "new"],
+
+              // Add more mappings as needed
+            };
+
+            const issue = context.payload.issue;
+            const issueNumber = issue.number;
+            const title = issue.title.toLowerCase();
+            const body = issue.body.toLowerCase();
+            const labelsToAdd = [];
+
+            for (const [label, keywords] of Object.entries(keywordsLabelsMap)) {
+              if (keywords.some(keyword => title.includes(keyword) || body.includes(keyword))) {
+                labelsToAdd.push(label);
+              }
+            }
+
+            if (labelsToAdd.length > 0) {
+              github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                labels: labelsToAdd
+              });
+            }
