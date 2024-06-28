@@ -1,19 +1,16 @@
-"use client"
+"use client";
 
-import { Billboard } from "@/types";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import 'swiper/swiper-bundle.css';
-
+import type { Billboard } from "@/types";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import "swiper/swiper-bundle.css";
 
 interface BillboardProps {
   data: Billboard;
 }
 
-const Billboard: React.FC<BillboardProps> = ({
-  data
-}) => {
-  return ( 
+const Billboard: React.FC<BillboardProps> = ({ data }) => {
+  return (
     <div className="p-4 sm:p-6 lg:p-8 rounded-xl overflow-hidden">
       <Swiper
         spaceBetween={30}
