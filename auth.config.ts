@@ -14,7 +14,7 @@ export const authConfig = {
      * Used by MiddleWare
      */
     async authorized({ auth, request }) {
-      return !!auth?.user;
+      return true;
     },
   },
 } satisfies NextAuthConfig;
